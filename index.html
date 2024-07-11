@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Sudoku Visualizer</title>
+        <link rel="stylesheet" href="style.css" />
+        <!-- FontAwesome for github, linkedin icon -->
+        <link
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"
+        />
+        <!-- For adding confetti -->
+        <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+        <!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js"></script> -->
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> 
+    </head>
+    
+    <body>
+
+        <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
+        <!-- particles.js container --> 
+        <div id="particles-js"></div> 
+
+        <!-- =============== NAVBAR ======================= -->
+        <nav id="nav-bar">
+            <a href="/SudokuSolver/index.html">
+                <h2>Sudoku Visualizer</h2>
+            </a>
+            <li id="clear"><span>Clear</span></li>
+            <li id="randomly-fill" title="generate new sudoku board">
+                <span>Generate Board</span>
+            </li>
+            <li id="solve" title="solve sudoku"><span>Solve</span></li>
+            
+            <li>
+                <span class="selected" title="select speed of visualization">Speed</span>
+                <i class="fa-solid fa-chevron-down"></i>
+                <ul class="sub-menu">
+                    <li class="speed-options">Fast</li>
+                    <li class="speed-options">Medium</li>
+                    <li class="speed-options">Slow</li>
+                    <li class="speed-options">Xtra Slow</li>
+                </ul>
+            </li>
+            
+            <li>
+                <span class="algo-selected" title="select algorithm">Algorithm</span>
+                <i class="fa-solid fa-chevron-down"></i>
+                <ul class="algo-sub-menu">
+                    <li class="algo-options">Backtracking</li>
+                </ul>
+            </li>
+            <pre></pre>
+        </nav>
+        
+        <!-- =============== MAIN CONTAINER ======================= -->
+        <div id="main-container">
+            <div id="algo-info">
+                <div id="algo-info-header"></div>
+                <div id="algo-info-info"></div>
+            </div>
+            
+            <!-- ========= SUDOKU BOX ========== -->
+            <div id="main">
+                <table id="grid">
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                    <tr class="row">
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>
+                        <td class="cell"><input type="text" maxlength="1" /></td>           
+                    <!--row--></tr>
+                </table>
+            </div>
+
+        </div>
+        <!-- =========== SOCIAL LINKS ============ -->
+        <div id="right-socials">
+            <a href="https://github.com/vansh-codes/" style="color: #000"
+            ><i class="fa-brands fa-github fa-3x" id="github-link"></i
+                ></a>
+                <a
+                href="https://linked.com/in/vanshchaurasiya24/"
+                style="color: #0a66c2"
+                ><i
+                class="fa-brands fa-linkedin fa-3x"
+                id="linkedin-link"
+                ></i
+                ></a>
+        </div>
+            
+            <!-- ============ FOOTER =============== -->
+            
+            <div class="footer">
+                Created by &copy;
+                <a href="https://github.com/vansh-codes/" target="_blank"
+                >vansh-codes</a
+                >
+                2024
+            </div>
+            
+            <!-- ========== SCRIPT LINKING ==============  -->
+            <script src="script.js"></script>
+    </body>
+</html>
