@@ -585,7 +585,7 @@ function fillCell(row, col, val) {
 
 function playSound(){
     var succeedSound = new Audio();
-    succeedSound.src = "success.mp3";
+    succeedSound.src = "/assets/success.mp3";
     succeedSound.preload = "auto";
     succeedSound.play();
 }
@@ -752,10 +752,10 @@ particlesJS("particles-js", {
             type: "edge",
             stroke: { width: 0, color: "#000" },
             polygon: { nb_sides: 4 },
-            image: { src: "img/github.svg", width: 80, height: 80 },
+            image: { src: "img/github.svg", width: 90, height: 90 },
         },
         opacity: {
-            value: 0.3,
+            value: 0.6,
             random: true,
             anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false },
         },
@@ -799,7 +799,7 @@ particlesJS("particles-js", {
                 speed: 3,
             },
             repulse: { distance: 200, duration: 0.4 },
-            push: { particles_nb: 2 },
+            push: { particles_nb: 3},
             remove: { particles_nb: 2 },
         },
     },
