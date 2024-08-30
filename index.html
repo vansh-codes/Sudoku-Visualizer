@@ -27,55 +27,52 @@
             integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
             crossorigin="anonymous" referrerpolicy="no-referrer"
         />
-        <!-- For adding confetti -->
-        <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> 
+        <!-- DriverJS  -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
     </head>
     
     <body>
-
         <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> 
         <!-- particles.js container --> 
         <div id="particles-js"></div> 
 
         <!-- =============== NAVBAR ======================= -->
-        <nav id="nav-bar">
-            <a href="/SudokuSolver/index.html">
+        <nav id="nav-bar" class="no-select">
+            <a href="/">
                 <h2>Sudoku Visualizer</h2>
             </a>
-            <li id="clear"><span>Clear</span></li>
-            <li id="randomly-fill" title="generate new sudoku board">
-                <span>Generate Board</span>
-            </li>
-            <li id="solve" title="solve sudoku"><span>Solve</span></li>
-            
-            <li>
-                <span class="selected" title="select speed of visualization">Speed</span>
-                <i class="fa-solid fa-chevron-down"></i>
-                <ul class="sub-menu">
-                    <li class="speed-options">Fast</li>
-                    <li class="speed-options">Medium</li>
-                    <li class="speed-options">Slow</li>
-                    <li class="speed-options">Xtra Slow</li>
-                </ul>
-            </li>
-            
-            <li>
-                <span class="algo-selected" title="select algorithm">Algorithm</span>
-                <i class="fa-solid fa-chevron-down"></i>
-                <ul class="algo-sub-menu">
-                    <li class="algo-options">Backtracking</li>
-                </ul>
-            </li>
-            <pre></pre>
-        </nav>
+            <ul class="nav-links">
+
+                <li id="clear"><span>Clear</span></li>
+                <li id="generate-board" title="generate new sudoku board">
+                    <span>Generate Board</span>
+                </li>
+                <li id="solve" title="solve sudoku"><span>Solve</span></li>
+                
+                <li>
+                    <span class="selected" title="select speed of visualization" id="speed">Speed</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <ul class="sub-menu">
+                        <li class="speed-options">Fast</li>
+                        <li class="speed-options">Medium</li>
+                        <li class="speed-options">Slow</li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="nav-icons">
+                <button id="toggle-dark-mode" title="toggle theme, Tip: use ctrl+q to toggle">
+                    <i class="fas"></i>
+                </button>
+            </div>
+            <div class="line" id="line">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </nav>  
         
         <!-- =============== MAIN CONTAINER ======================= -->
         <div id="main-container">
-            <div id="algo-info">
-                <div id="algo-info-header"></div>
-                <div id="algo-info-info"></div>
-            </div>
             
             <!-- ========= SUDOKU BOX ========== -->
             <div id="main">
@@ -90,7 +87,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -102,7 +99,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -114,7 +111,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -126,7 +123,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -138,7 +135,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -150,7 +147,7 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                     
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -162,7 +159,8 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
+
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -173,7 +171,8 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
+
                     <tr class="row">
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
@@ -184,37 +183,44 @@
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>
                         <td class="cell"><input type="text" maxlength="1" /></td>           
-                    <!--row--></tr>
+                    </tr>
                 </table>
             </div>
-
         </div>
         <!-- =========== SOCIAL LINKS ============ -->
         <div id="right-socials">
-            <a href="https://github.com/vansh-codes/Sudoku-Visualizer" style="color: #000"
-            ><i class="fa-brands fa-github fa-3x" id="github-link"></i
-                ></a>
-                <a
-                href="https://linkedin.com/in/vanshchaurasiya24/"
-                style="color: #0a66c2"
-                ><i
-                class="fa-brands fa-linkedin fa-3x"
-                id="linkedin-link"
-                ></i
-                ></a>
+            <a href="https://github.com/vansh-codes/Sudoku-Visualizer" style="color: #000">
+                <i class="fa-brands fa-github fa-3x" id="github-link"></i>
+                <div class="social-card" id="github-card">
+                    <!-- Skeleton loader -->
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <!-- GitHub card content will be injected here -->
+                </div>
+            </a>
+            <a href="https://linkedin.com/in/vanshchaurasiya24/" style="color: #0a66c2">
+                <i class="fa-brands fa-linkedin fa-3x" id="linkedin-link"></i>
+            </a>
         </div>
             
             <!-- ============ FOOTER =============== -->
             
             <div class="footer">
+                <div id="tutorial" class="tutorial" title="Start tutorial">
+                    <i class="fa-regular fa-lightbulb"></i>
+                </div>
                 Made by &copy;
-                <a href="https://github.com/vansh-codes/" target="_blank"
-                >vansh-codes</a
-                >
+                <a href="https://github.com/vansh-codes/" target="_blank">vansh-codes</a>
                 2024
             </div>
             
             <!-- ========== SCRIPT LINKING ==============  -->
+             <!-- For adding confetti -->
+            <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+            <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> 
+            <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
             <script src="script.js"></script>
     </body>
 </html>
